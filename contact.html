@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact and Find Us in Pretoria | EmberCraft Studio</title>
+    <meta name="description" content="Find EmberCraft Studio in Hatfield and at the Saturday Hazel Food Market in Brooklyn, check opening hours, and send us a message.">
+    <meta name="keywords" content="contact EmberCraft Studio, candle studio Hatfield Pretoria, Hazel Food Market candles, studio opening hours, send message">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header and navigation: identical markup repeated on every page so the menu stays consistent site-wide -->
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="EmberCraft Studio - Handmade Soy Candles, Est. 2023" class="logo-img"></a>
+
+        <!-- Hamburger toggle button (hidden on desktop, visible on mobile) -->
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Location listings: each keeps its embedded Google Map from Part 2 -->
+        <section id="locations">
+            <h1>Find Us</h1>
+
+            <article class="location">
+                <h3>Studio</h3>
+                <p>12 Jacaranda Street, Hatfield, Pretoria (visits by appointment only)</p>
+                <iframe src="https://maps.google.com/maps?q=Hatfield,Pretoria&amp;output=embed" width="100%" height="250" loading="lazy" title="EmberCraft Studio location map"></iframe>
+            </article>
+
+            <article class="location">
+                <h3>Weekend Market Stall</h3>
+                <p>Hazel Food Market, Brooklyn, Pretoria — every Saturday, 9am–2pm</p>
+                <iframe src="https://maps.google.com/maps?q=Brooklyn,Pretoria&amp;output=embed" width="100%" height="250" loading="lazy" title="Weekend market stall location map"></iframe>
+            </article>
+
+            <!-- Part 3: one interactive Leaflet map showing both places. Drag to move, use +/- to zoom, click a marker for details -->
+            <h2>Both Locations on One Map</h2>
+            <div id="map" role="region" aria-label="Interactive map showing the studio and the weekend market stall"></div>
+        </section>
+
+        <section id="hours">
+            <h2>Opening Hours</h2>
+            <p>Studio visits by appointment, Tuesday–Friday, 10am–4pm. Find the stall at the Hazel Food Market every Saturday, 9am–2pm.</p>
+        </section>
+
+        <!-- General contact form (distinct from the booking form on enquiry.html) -->
+        <section id="contact-section">
+            <h2>Send Us a Message</h2>
+            <p>Fill in the form and your email app opens with the message ready to send. To book a workshop or ask about prices, use the <a href="enquiry.html">enquiry form</a> instead.</p>
+
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="con-name">Full name:</label>
+                    <input type="text" id="con-name" name="name" autocomplete="name" aria-describedby="con-name-error">
+                    <span class="error-message" id="con-name-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="con-email">Email address:</label>
+                    <input type="email" id="con-email" name="email" autocomplete="email" aria-describedby="con-email-error">
+                    <span class="error-message" id="con-email-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="con-phone">Phone number:</label>
+                    <input type="tel" id="con-phone" name="phone" autocomplete="tel" placeholder="082 123 4567" aria-describedby="con-phone-error">
+                    <span class="error-message" id="con-phone-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="con-type">Type of message:</label>
+                    <select id="con-type" name="type" aria-describedby="con-type-error">
+                        <option value="">-- Please select an option --</option>
+                        <option value="general-question">General question</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="press">Press or media</option>
+                    </select>
+                    <span class="error-message" id="con-type-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="con-message">Message:</label>
+                    <textarea id="con-message" name="message" rows="5" aria-describedby="con-message-error con-message-count"></textarea>
+                    <span class="error-message" id="con-message-error" aria-live="polite"></span>
+                    <span class="char-count" id="con-message-count"></span>
+                </div>
+                <button type="submit">Prepare email</button>
+            </form>
+
+            <!-- Filled in by js/script.js after the form passes validation -->
+            <div id="contact-status" class="response-card" tabindex="-1" aria-live="polite" hidden></div>
+        </section>
+    </main>
+
+    <!-- Footer: repeated on every page -->
+    <footer>
+        <p>&copy; 2026 EmberCraft Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>

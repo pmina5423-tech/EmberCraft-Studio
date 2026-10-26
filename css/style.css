@@ -1,0 +1,903 @@
+/* EmberCraft Studio stylesheet - Part 3 (colour and decoration consistency pass) */
+
+/* ---------- 1. Reset ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- 2. Base Style ---------- */
+:root {
+    --font-heading: Georgia, 'Times New Roman', serif;
+    --font-body: Arial, Helvetica, sans-serif;
+
+    /* Colour palette */
+    --color-text: #3d3a35;
+    --color-white: #ffffff;
+    --color-accent: #c98a4b;        /* warm amber - primary accent, candle-glow tone */
+    --color-accent-hover: #a86f38;  /* darker amber for hover/focus states */
+    --color-accent-active: #8a5b2c; /* darker still for active/pressed states */
+    --color-sage: #8a9a7e;          /* sage green pulled from the logo's olive sprig */
+    --color-sage-soft: #e3e6de;     /* pale sage for borders and dividers */
+    --color-cream: #f6f1e7;         /* background tint for cards, forms, footer */
+    --color-muted: #8a7f6b;
+    --color-border: #d6d0c2;        /* form field borders, warm neutral */
+
+    /* Shadows and focus ring, built from the palette */
+    --color-shadow: rgba(61, 58, 53, 0.08);
+    --color-shadow-strong: rgba(61, 58, 53, 0.16);
+    --color-focus-ring: rgba(201, 138, 75, 0.3);
+    --color-overlay: rgba(30, 28, 25, 0.88);   /* lightbox backdrop */
+    --color-error: #9b2c2c;                    /* validation errors */
+
+    /* Shared decoration values */
+    --radius: 6px;
+    --transition: 0.3s ease;
+    --content-width: 1100px;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* ---------- 3. Typography Styles ---------- */
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    line-height: 1.3;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 65ch;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.price {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-accent-active);
+}
+
+.gift-note {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-top: 0.4rem;
+}
+
+/* ---------- 4. Layout Structure ---------- */
+
+/* Header: logo and nav in a flex row */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+.logo-img {
+    width: 200px;
+    height: auto;
+}
+
+/* Hamburger menu button: hidden on desktop, shown on mobile */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text);
+    position: relative;
+    transition: background var(--transition);
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text);
+    left: 0;
+    transition: transform var(--transition), top var(--transition);
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Main content column, shared by every page */
+main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+}
+
+main section {
+    margin-bottom: 3rem;
+}
+
+/* Hero: stacked and centred, image first */
+#hero {
+    text-align: center;
+}
+
+#hero img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius);
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border-radius: var(--radius);
+}
+
+/* About page: history / mission & vision / team stacked with a readable measure */
+#history p,
+#mission-vision p,
+#team p {
+    max-width: 70ch;
+}
+
+/* Products page: responsive-ready grid, 3 columns on desktop */
+#product-range {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+#product-range h1,
+#product-range h2 {
+    grid-column: 1 / -1;
+}
+
+.product img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    border-radius: var(--radius);
+}
+
+/* Contact page: two location cards side by side, forms stacked */
+#locations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+#locations h1,
+#locations h2 {
+    grid-column: 1 / -1;
+}
+
+.location iframe {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+    max-width: 100%;
+    border: 0;
+    border-radius: var(--radius);
+}
+
+/* Forms: single column, consistent spacing between fields (contact + enquiry) */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 500px;
+}
+
+form input,
+form select,
+form textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+form button {
+    align-self: flex-start;
+    padding: 0.75rem 1.75rem;
+    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+/* Form groups: wraps each label + input pair for better layout control */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.3rem;
+}
+
+/* Footer */
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: var(--color-cream);
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-sage-soft);
+}
+
+/* ---------- 5. Decoration & Colour ---------- */
+/* Every card, button and field uses --radius, --transition and the palette
+   shadows, so decoration is identical on all five pages. */
+
+header {
+    border-bottom: 1px solid var(--color-sage-soft);
+}
+
+/* Section dividers */
+main section:not(:last-child) {
+    border-bottom: 1px solid var(--color-sage-soft);
+    padding-bottom: 2rem;
+}
+
+/* Heading accent: short amber bar under every h2 */
+h2::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 3px;
+    margin-top: 0.5rem;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+#hero h2::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cards: products and locations share one style */
+.product,
+.location {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-sage-soft);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: 0 2px 6px var(--color-shadow);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+/* Forms: cream panel with a sage accent edge */
+#contact-form,
+#enquiry-form {
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-sage-soft);
+    border-left: 4px solid var(--color-sage);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+/* Smooth colour changes on every interactive element */
+nav a,
+.cta-button,
+form button {
+    transition: color var(--transition), background-color var(--transition);
+}
+
+/* ---------- 6. Interactive States (Pseudo-classes) ---------- */
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+
+nav a:active {
+    color: var(--color-accent-active);
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--color-accent-hover);
+}
+
+.cta-button:active {
+    background-color: var(--color-accent-active);
+}
+
+form button:hover,
+form button:focus {
+    background-color: var(--color-accent-hover);
+}
+
+form button:active {
+    background-color: var(--color-accent-active);
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.product:hover,
+.location:hover {
+    box-shadow: 0 4px 12px var(--color-shadow-strong);
+    transform: translateY(-2px);
+}
+
+/* ---------- 6b. Gallery and Lightbox ---------- */
+/* Thumbnails are all the same square size, whatever the source image shape. */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    max-width: 760px;
+}
+
+.gallery-item {
+    display: block;
+    overflow: hidden;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-sage-soft);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 6px var(--color-shadow);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.gallery-item:hover,
+.gallery-item:focus {
+    box-shadow: 0 4px 12px var(--color-shadow-strong);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.gallery-item:focus {
+    border-color: var(--color-accent);
+}
+
+/* Lightbox overlay: built by script.js, hidden until a thumbnail is clicked */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--color-overlay);
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-figure {
+    max-width: 90vw;
+    text-align: center;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    margin: 0 auto;
+    border-radius: var(--radius);
+}
+
+.lightbox-caption {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-cream);
+}
+
+.lightbox button {
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--color-white);
+    background: none;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.lightbox button:hover,
+.lightbox button:focus {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    outline: none;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+/* ---------- 6c. Form Feedback and Response Card ---------- */
+.error-message {
+    margin: -0.4rem 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+
+.error-message:empty {
+    display: none;
+}
+
+form input.input-invalid,
+form select.input-invalid,
+form textarea.input-invalid {
+    border-color: var(--color-error);
+}
+
+.char-count {
+    margin: -0.4rem 0 0.75rem;
+    font-size: 0.85rem;
+    text-align: right;
+    color: var(--color-muted);
+}
+
+.response-card {
+    max-width: 500px;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-sage-soft);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 6px var(--color-shadow);
+}
+
+.response-card:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.response-card p:last-child {
+    margin-bottom: 0;
+}
+
+.response-price {
+    font-weight: bold;
+}
+
+.response-note {
+    font-style: italic;
+    color: var(--color-muted);
+}
+
+/* ---------- 6d. Product Search, Accordion, Map and Motion ---------- */
+
+/* Search, filter and sort bar on the products page */
+.product-controls {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    max-width: none;
+    padding: 1rem 1.25rem;
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-sage-soft);
+    border-left: 4px solid var(--color-sage);
+    border-radius: var(--radius);
+}
+
+.product-controls .form-group {
+    flex: 1 1 180px;
+    margin-bottom: 0;
+}
+
+.product-controls input,
+.product-controls select {
+    margin-bottom: 0;
+}
+
+#product-count,
+#product-empty {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+    color: var(--color-muted);
+}
+
+#product-results {
+    display: contents;
+}
+
+/* Only when JavaScript is off: show the plain HTML cards and keep them in the grid.
+   With JavaScript on, the browser hides <noscript> by default and this rule does not apply. */
+@media (scripting: none) {
+    noscript {
+        display: contents;
+    }
+}
+
+.product .cta-button {
+    margin-top: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+}
+
+/* Cards fade up when the list is built or filtered */
+.product {
+    animation: fade-up 0.4s ease backwards;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FAQ accordion on the enquiry page */
+.accordion h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+}
+
+.accordion-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-text);
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-sage-soft);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.accordion-trigger::after {
+    content: '+';
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--color-accent-hover);
+}
+
+.accordion-trigger[aria-expanded="true"]::after {
+    content: '\2212';
+}
+
+.accordion-trigger:hover,
+.accordion-trigger:focus {
+    border-color: var(--color-accent);
+    outline: none;
+}
+
+.accordion-trigger[aria-expanded="true"] {
+    background-color: var(--color-white);
+    border-color: var(--color-accent);
+}
+
+.accordion-panel {
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 1rem 0.5rem;
+    border-left: 4px solid var(--color-sage);
+    animation: fade-up 0.3s ease backwards;
+}
+
+.accordion-panel[hidden] {
+    display: none;
+}
+
+/* Interactive map on the contact page */
+#map {
+    grid-column: 1 / -1;
+    height: 400px;
+    border: 1px solid var(--color-sage-soft);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 6px var(--color-shadow);
+}
+
+.location .map-focus {
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.location .map-focus:hover,
+.location .map-focus:focus {
+    background-color: var(--color-accent-hover);
+}
+
+/* Respect visitors who ask their device to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .product,
+    .accordion-panel {
+        animation: none;
+    }
+
+    .product:hover,
+    .location:hover,
+    .gallery-item:hover {
+        transform: none;
+    }
+}
+
+/* ---------- 7. Responsive Design ---------- */
+/* Breakpoints: Tablet <= 992px, Mobile <= 600px. Relative units (rem, %) are
+   used throughout so text and layout scale smoothly instead of jumping. */
+
+/* --- Tablet --- */
+@media (max-width: 992px) {
+    header,
+    main {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    /* Typography: scale headings down slightly for the narrower column */
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    /* Layout: product grid drops from 3 columns to 2 */
+    #product-range {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Layout: location cards stack instead of sitting side by side */
+    #locations {
+        grid-template-columns: 1fr;
+    }
+
+    /* Images: shorter hero/product crops so photos don't dominate the tablet view */
+    #hero img {
+        height: 320px;
+    }
+
+    .product img {
+        height: 220px;
+    }
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+    header,
+    main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Layout: header stacks logo above nav instead of a side-by-side row.
+       position: relative lets the hamburger button sit in the top-right corner. */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .logo-img {
+        width: 150px;
+    }
+
+    /* Show the hamburger button on mobile, positioned top-right */
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    /* Navigation: hidden until script.js adds .nav-open */
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    nav.nav-open {
+        display: block;
+    }
+
+    /* Hamburger turns into an X while the menu is open */
+    .nav-toggle[aria-expanded="true"] .hamburger {
+        background: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] .hamburger::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .hamburger::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    nav li {
+        width: 100%;
+        border-top: 1px solid var(--color-sage-soft);
+    }
+
+    nav a {
+        display: block;
+        padding: 0.75rem 0;
+    }
+
+    /* Typography: further scale down for small screens, body text stays legible */
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    /* Layout: products and forms become a single column */
+    #product-range {
+        grid-template-columns: 1fr;
+    }
+
+    form {
+        max-width: 100%;
+    }
+
+    /* Images: crop heights shrink further so photos don't push content
+       below the fold on a phone screen */
+    #hero img {
+        height: 220px;
+    }
+
+    .product img {
+        height: 200px;
+    }
+
+    .cta-button,
+    form button {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Gallery: two thumbnails per row, lightbox arrows move below the image */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lightbox {
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .lightbox-figure {
+        order: -1;
+        width: 100%;
+    }
+
+    /* Search bar fields stack; map is shorter on phones */
+    .product-controls .form-group {
+        flex-basis: 100%;
+    }
+
+    #map {
+        height: 320px;
+    }
+}

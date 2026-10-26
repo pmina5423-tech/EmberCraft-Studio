@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand-Poured Soy Candles and Prices | EmberCraft Studio</title>
+    <meta name="description" content="Browse EmberCraft Studio's hand-poured candle range, Ember &amp; Oak, Sunday Morning and Firelight Grove, with prices from R220 and a photo gallery.">
+    <meta name="keywords" content="soy candle range, Ember and Oak candle, Sunday Morning candle, Firelight Grove candle, candle prices Pretoria, gift candles">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header and navigation: identical markup repeated on every page so the menu stays consistent site-wide -->
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="EmberCraft Studio - Handmade Soy Candles, Est. 2023" class="logo-img"></a>
+
+        <!-- Hamburger toggle button (hidden on desktop, visible on mobile) -->
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="product-range">
+            <h1>Our Candle Ranges</h1>
+
+            <!-- Search, filter and sort: handled by js/script.js -->
+            <form class="product-controls" id="product-filter-form" role="search" aria-label="Search and filter candles" novalidate>
+                <div class="form-group">
+                    <label for="product-search">Search candles</label>
+                    <input type="search" id="product-search" name="search" placeholder="Try cedar, citrus or vanilla" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="product-family">Scent family</label>
+                    <select id="product-family" name="family">
+                        <option value="all">All scents</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-sort">Sort by</label>
+                    <select id="product-sort" name="sort">
+                        <option value="featured">Featured</option>
+                        <option value="price-asc">Price: low to high</option>
+                        <option value="price-desc">Price: high to low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+                <button type="button" id="product-reset">Clear</button>
+            </form>
+
+            <p id="product-count" aria-live="polite"></p>
+            <p id="product-empty" hidden>No candles match your search. Try a different word, or press Clear to see the full range.</p>
+
+            <!-- The candle cards are built by js/script.js from its PRODUCTS list -->
+            <div id="product-results"></div>
+
+            <!-- Shown only when JavaScript is switched off -->
+            <noscript>
+                <article class="product">
+                    <img src="images/product-placeholder-1.jpg" srcset="images/product-placeholder-1-400w.jpg 400w, images/product-placeholder-1-600w.jpg 600w, images/product-placeholder-1-800w.jpg 800w" sizes="(max-width: 600px) 100vw, (max-width: 992px) 50vw, 33vw" alt="Ember &amp; Oak hand-poured candle with a warm amber and cedar scent">
+                    <h3>Ember &amp; Oak</h3>
+                    <p>A warm, woody blend of amber and cedar, finished with a subtle hint of smoke. Our most popular scent and a reliable choice for any occasion.</p>
+                    <p class="gift-note">A versatile option well-suited as a gift when the recipient's preferences are unknown.</p>
+                    <p class="price">R250</p>
+                </article>
+                <article class="product">
+                    <img src="images/product-placeholder-2.jpg" srcset="images/product-placeholder-2-400w.jpg 400w, images/product-placeholder-2-600w.jpg 600w, images/product-placeholder-2-800w.jpg 800w" sizes="(max-width: 600px) 100vw, (max-width: 992px) 50vw, 33vw" alt="Sunday Morning hand-poured candle with a fresh citrus and linen scent">
+                    <h3>Sunday Morning</h3>
+                    <p>A fresh blend of citrus and clean linen, designed to evoke slow mornings and open windows.</p>
+                    <p class="gift-note">Ideal for those who prefer a lighter, more subtle fragrance.</p>
+                    <p class="price">R220</p>
+                </article>
+                <article class="product">
+                    <img src="images/product-placeholder-3.jpg" srcset="images/product-placeholder-3-400w.jpg 400w, images/product-placeholder-3-600w.jpg 600w, images/product-placeholder-3-800w.jpg 800w" sizes="(max-width: 600px) 100vw, (max-width: 992px) 50vw, 33vw" alt="Firelight Grove hand-poured candle with cedarwood, vanilla and clove">
+                    <h3>Firelight Grove</h3>
+                    <p>A rich combination of cedarwood, vanilla, and clove, offering warmth without being overpowering.</p>
+                    <p class="gift-note">A popular choice for housewarmings and seasonal gifting.</p>
+                    <p class="price">R280</p>
+                </article>
+            </noscript>
+        </section>
+
+        <!-- Gallery: identical square thumbnails; clicking one opens the lightbox (see js/script.js) -->
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <p>A closer look at the range. Click a picture to view it larger. Ready to order? <a href="enquiry.html">Send an enquiry</a>.</p>
+            <div class="gallery-grid">
+                <a class="gallery-item" href="images/cork-lidded-soy-candles-white-bedding-large.jpg">
+                    <img src="images/cork-lidded-soy-candles-white-bedding-thumb.jpg" alt="Two cream soy candles in clear glass jars with cork lids resting on crumpled white bedding" width="400" height="400" loading="lazy">
+                </a>
+                <a class="gallery-item" href="images/three-scented-candles-wooden-lids-large.jpg">
+                    <img src="images/three-scented-candles-wooden-lids-thumb.jpg" alt="Three scented candles in dark blue glass jars with wooden lids stacked in a pyramid" width="400" height="400" loading="lazy">
+                </a>
+                <a class="gallery-item" href="images/rose-geranium-candle-tulips-wooden-table-large.jpg">
+                    <img src="images/rose-geranium-candle-tulips-wooden-table-thumb.jpg" alt="Pink-labelled candle in a wide glass jar on a wooden table beside a vase of yellow tulips" width="400" height="400" loading="lazy">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: repeated on every page -->
+    <footer>
+        <p>&copy; 2026 EmberCraft Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>

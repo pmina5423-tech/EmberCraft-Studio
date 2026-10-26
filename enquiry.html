@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Candle Workshop or Enquire | EmberCraft Studio</title>
+    <meta name="description" content="Book a scent-blending workshop or ask about EmberCraft Studio's candles and gifts. Complete the form to see the price and availability straight away.">
+    <meta name="keywords" content="book candle workshop Pretoria, candle enquiry, scent-blending workshop, gift candles, candle prices">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header and navigation: identical markup repeated on every page so the menu stays consistent site-wide -->
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="EmberCraft Studio - Handmade Soy Candles, Est. 2023" class="logo-img"></a>
+
+        <!-- Hamburger toggle button (hidden on desktop, visible on mobile) -->
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="enquiry-section">
+            <h1>Book a Workshop or Ask a Question</h1>
+            <p>Whether you would like to book a workshop or enquire about a product, please complete the form below and the price and availability appear as soon as you submit. We aim to respond to all enquiries within one to two business days. You can see every scent on the <a href="products.html">products page</a>.</p>
+
+            <!-- Enquiry form: validated by js/script.js; novalidate turns off the browser's default pop-ups -->
+            <form id="enquiry-form" novalidate>
+                <div class="form-group">
+                    <label for="enq-name">Full name:</label>
+                    <input type="text" id="enq-name" name="name" autocomplete="name" aria-describedby="enq-name-error">
+                    <span class="error-message" id="enq-name-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-email">Email address:</label>
+                    <input type="email" id="enq-email" name="email" autocomplete="email" aria-describedby="enq-email-error">
+                    <span class="error-message" id="enq-email-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-phone">Phone number:</label>
+                    <input type="tel" id="enq-phone" name="phone" autocomplete="tel" placeholder="082 123 4567" aria-describedby="enq-phone-error">
+                    <span class="error-message" id="enq-phone-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-type">What is your enquiry about?</label>
+                    <select id="enq-type" name="type" aria-describedby="enq-type-error">
+                        <option value="">-- Please select an option --</option>
+                        <option value="workshop">Scent-blending workshop</option>
+                        <option value="ember-oak">Ember &amp; Oak candle</option>
+                        <option value="sunday-morning">Sunday Morning candle</option>
+                        <option value="firelight-grove">Firelight Grove candle</option>
+                        <option value="gift">Gift or gift set</option>
+                    </select>
+                    <span class="error-message" id="enq-type-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-quantity">Quantity (number of people for a workshop):</label>
+                    <input type="number" id="enq-quantity" name="quantity" min="1" max="100" value="1" aria-describedby="enq-quantity-error">
+                    <span class="error-message" id="enq-quantity-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-date">Preferred date:</label>
+                    <input type="date" id="enq-date" name="date" aria-describedby="enq-date-error">
+                    <span class="error-message" id="enq-date-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-budget">Budget range:</label>
+                    <select id="enq-budget" name="budget" aria-describedby="enq-budget-error">
+                        <option value="">-- Please select a range --</option>
+                        <option value="under-500">Under R500</option>
+                        <option value="500-1000">R500 to R1 000</option>
+                        <option value="1000-2500">R1 000 to R2 500</option>
+                        <option value="over-2500">Over R2 500</option>
+                        <option value="not-sure">Not sure yet</option>
+                    </select>
+                    <span class="error-message" id="enq-budget-error" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="enq-message">Message:</label>
+                    <textarea id="enq-message" name="message" rows="5" aria-describedby="enq-message-error enq-message-count"></textarea>
+                    <span class="error-message" id="enq-message-error" aria-live="polite"></span>
+                    <span class="char-count" id="enq-message-count"></span>
+                </div>
+                <button type="submit">Get price and availability</button>
+            </form>
+
+            <!-- Filled in by js/script.js after the form passes validation -->
+            <div id="enquiry-response" class="response-card" tabindex="-1" aria-live="polite" hidden></div>
+        </section>
+
+        <!-- FAQ accordion: opened and closed by js/script.js -->
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="accordion">
+                <h3><button type="button" class="accordion-trigger" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">How soon will you reply to my enquiry?</button></h3>
+                <div class="accordion-panel" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+                    <p>We aim to respond to all enquiries within one to two business days.</p>
+                </div>
+
+                <h3><button type="button" class="accordion-trigger" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">Where can I see or collect the candles?</button></h3>
+                <div class="accordion-panel" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+                    <p>Visit the stall at the Hazel Food Market in Brooklyn every Saturday, 9am to 2pm, or the studio in Hatfield by appointment, Tuesday to Friday, 10am to 4pm. The <a href="contact.html">contact page</a> has a map.</p>
+                </div>
+
+                <h3><button type="button" class="accordion-trigger" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">What are the candles made from?</button></h3>
+                <div class="accordion-panel" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+                    <p>Every candle is hand-poured in small batches in our Pretoria studio, using soy wax and carefully tested scent blends. See the full <a href="products.html">candle range</a>.</p>
+                </div>
+
+                <h3><button type="button" class="accordion-trigger" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">Do you run workshops?</button></h3>
+                <div class="accordion-panel" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+                    <p>Yes, we offer hands-on scent-blending workshops at the studio. Choose Scent-blending workshop in the form above to see the price and availability.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: repeated on every page -->
+    <footer>
+        <p>&copy; 2026 EmberCraft Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
