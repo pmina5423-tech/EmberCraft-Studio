@@ -39,7 +39,7 @@ _Add screenshots here before submitting, taken using your browser's device toolb
 
 Repeat for each of the 5 pages, or at minimum the homepage and one content page (e.g. Products) and one form page (e.g. Enquiry), saved into an `images/screenshots/` folder in the repo.
 
-## Changelog
+## ChangeLog 
 - 2026-08-03: Initial project structure, folder layout, and HTML5 boilerplate created for all 5 pages.
 - 2026-08-04: Logo added and integrated into the header across all pages.
 - 2026-08-04: Content added to About, Products, Enquiry, and Contact pages; homepage intro written.
