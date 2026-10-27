@@ -2,5 +2,4 @@
 User-agent: *
 Allow: /
 
-# Replace the address below with your live site address
-Sitemap: https://YOUR-USERNAME.github.io/YOUR-REPO/sitemap.xml
+Sitemap: https://pmina5423-tech.github.io/EmberCraft-Studio/sitemap.xml
